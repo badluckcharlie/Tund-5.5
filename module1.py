@@ -31,16 +31,22 @@ def average_age():
 def list_oldest_youngest():
     from datetime import datetime
     current_year = datetime.now().year
+
     combined = list(zip(worker_data[0], worker_data[1]))
-    combined.sort(key=lambda x: int(x[1]))
+    combined.sort(key=get_year)
+    combined.sort(key=get_year)
+
     print("\n10 youngest workers:")
     for name, year in combined[-10:]:
         print(f"{name:<8} - {year}")
+
     print("\n10 oldest workers:")
     for name, year in combined[:10]:
         print(f"{name:<8} - {year}")
-    print("_" * 25)
 
+    print("_" * 25)
+def get_year(z):
+    return int(z[1])
 def find_by_age(target_age):
     from datetime import datetime
     current_year = datetime.now().year
